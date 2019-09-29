@@ -32,6 +32,29 @@ public class LoginDao implements DaoInterface{
 		}
 		return user;
 	}
+	
+	public boolean changePass(String id,String oldPass,String newPass) {
+		boolean b = false;
+		String sql = "UPDATE login SET pass='"+newPass+"' WHERE id='"+id+"' AND pass='"+oldPass+"';";
+		try {
+			int i = loginCon.excuteUpdate(sql);
+			if(i == 0) {
+				b=false;
+			}else if(i == 1){
+				b = true;
+			}else {
+				b=false;
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println(sql);
+		} finally {
+			// TODO: handle finally clause
+			loginCon.close();
+		}
+		return b;
+	}
 
 	@Override
 	public List getList() {

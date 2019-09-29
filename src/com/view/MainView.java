@@ -14,6 +14,7 @@ public class MainView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected PersonalInfo personalJDialog;
+	protected ChangePass changePass;
 	
 	public MainView() {
 		super();
@@ -49,6 +50,17 @@ public class MainView extends JFrame {
 			}
 		});
 		personalCenterMenu.add(personalInfoItem);
+		JMenuItem changePassItem = new JMenuItem("ÐÞ¸ÄÃÜÂë");
+		changePassItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				changePass = new ChangePass();
+				changePass.setVisible(true);
+			}
+		});
+		personalCenterMenu.add(changePassItem);
 		this.getJMenuBar().add(personalCenterMenu);
 	}
 }

@@ -55,6 +55,7 @@ public class PersonalInfo extends JDialog implements Comment {
 		this.setTitle("个人信息管理");
 		this.setSize(534,246);
 		this.setLocation(0, 0);
+		this.setIconImage(LoginView.getImages().getSchoolLogo());
 		labSize = new Dimension(200,30);
 		
 		contentPane = new JPanel();

@@ -32,7 +32,7 @@ public class LoginView extends JDialog {
 	private JTextField nameText;
 	private JPasswordField passText;
 	private JPanel cententPane;
-	public LoginDao loginDao;
+	private LoginDao loginDao;
 	private static LoginView loginView;
 
 	public LoginView() {
@@ -151,6 +151,15 @@ public class LoginView extends JDialog {
 		
 	}
 
+	public static MainView getMainView() {
+		return mainView;
+	}
+
+	public static void reLogin() {
+		LoginView.mainView.dispose();
+		LoginView.loginView = new LoginView();
+		LoginView.loginView.setVisible(true);
+	}
 }
 
 

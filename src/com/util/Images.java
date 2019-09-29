@@ -19,6 +19,8 @@ public class Images {
 	private Image successful;
 	private Image user;
 	private Image warring2;
+	private Image yes2;
+	private Image error2;
 	private final String urlPre="/com/lib/images/";
 	private Toolkit toolKit;
 
@@ -95,6 +97,16 @@ public class Images {
 	public Image getWarring2() {
 		this.warring2=toolKit.getImage(this.getClass().getResource(urlPre+"warring2.png"));
 		return warring2;
+	}
+
+	public Image getYes2() {
+		this.yes2=toolKit.getImage(this.getClass().getResource(urlPre+"yes2.png"));
+		return yes2;
+	}
+
+	public Image getError2() {
+		this.error2=toolKit.getImage(this.getClass().getResource(urlPre+"error-2.png"));
+		return error2;
 	}
 
 
