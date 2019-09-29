@@ -1,10 +1,11 @@
 package com.dao;
 
 import java.sql.ResultSet;
+import java.util.List;
 import com.mode.UserMode;
 import com.util.ConnXupt;
 
-public class LoginDao {
+public class LoginDao implements DaoInterface{
 	
 	private ConnXupt loginCon;
 
@@ -30,5 +31,48 @@ public class LoginDao {
 			loginCon.close();
 		}
 		return user;
+	}
+
+	@Override
+	public List getList() {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+
+	@Override
+	public boolean deleteData(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List getIdNameList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getColumnName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getComment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTableComment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setValue() {
+		// TODO Auto-generated method stub
+		
 	}
 }

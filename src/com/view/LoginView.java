@@ -5,18 +5,15 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
 import com.dao.BaseInfoDao;
 import com.dao.LoginDao;
 import com.mode.BaseInfo;
@@ -35,11 +32,13 @@ public class LoginView extends JDialog {
 	private JTextField nameText;
 	private JPasswordField passText;
 	private JPanel cententPane;
+	public LoginDao loginDao;
 	private static LoginView loginView;
 
 	public LoginView() {
 		// TODO Auto-generated constructor stub
 		super();
+		loginDao = new LoginDao();
 		LoginView.images = new Images();
 		InitView();
 	}
@@ -137,7 +136,7 @@ public class LoginView extends JDialog {
 				JOptionPane.showMessageDialog(null, "请输入密码");
 				return ;
 			}
-			LoginDao loginDao = new LoginDao();
+			
 			LoginView.user=loginDao.login(idOrName, pass);
 			if(LoginView.user == null) {
 				JOptionPane.showMessageDialog(null, "登陆失败，用户名或密码错误，请重新输入", "警告", JOptionPane.WARNING_MESSAGE, new ImageIcon(LoginView.getImages().getWarring2()));

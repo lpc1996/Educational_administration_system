@@ -2,7 +2,6 @@ package com.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,8 +13,7 @@ public class MainView extends JFrame {
 	 * 主界面
 	 */
 	private static final long serialVersionUID = 1L;
-	protected PersonalInfo personalInfo;
-	private JDialog contentJDialog;
+	protected PersonalInfo personalJDialog;
 	
 	public MainView() {
 		super();
@@ -25,8 +23,8 @@ public class MainView extends JFrame {
 	private void InitJFrame() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("西安邮电大学-教务系统");
-		this.setSize(500, 500);
-		this.setResizable(false);
+		this.setSize(700, 500);
+		this.setResizable(true);
 		this.setJMenuBar(createJMenuBar());
 		createJMenu();
 		this.setVisible(true);
@@ -45,24 +43,12 @@ public class MainView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(personalInfo != null) {
-					personalInfo.updateUI();
-				}else {
-					personalInfo = new PersonalInfo();
-				}
-				contentJDialog = new JDialog();
-				contentJDialog.setTitle("个人信息管理");
-				contentJDialog.setVisible(true);
+				
+				personalJDialog = new PersonalInfo();
+				personalJDialog.setVisible(true);
 			}
 		});
 		personalCenterMenu.add(personalInfoItem);
 		this.getJMenuBar().add(personalCenterMenu);
 	}
-	
-	
-	public static void main(String [] argv) {
-		MainView main = new MainView();
-		
-	}
-	
 }

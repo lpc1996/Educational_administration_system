@@ -25,7 +25,7 @@ public class ConnXupt {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			JOptionPane.showMessageDialog(null, "加载数据库驱动失败");
+			JOptionPane.showMessageDialog(null, "加载数据库驱动失败，请检查数据库驱动！");
 			e.printStackTrace();
 		}
 		refreshConnection();
@@ -36,7 +36,7 @@ public class ConnXupt {
 			conn = DriverManager.getConnection(URL, USER, new Secret(PASS).set());
 		} catch (Exception e) {
 			// TODO: handle exception
-			JOptionPane.showMessageDialog(null, "数据库连接失败");
+			JOptionPane.showMessageDialog(null, "数据库连接失败,请检查数据库！");
 		}
 	}
 	

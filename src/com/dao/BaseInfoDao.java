@@ -2,11 +2,12 @@ package com.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.mode.BaseInfo;
 import com.util.ConnXupt;
 
-public class BaseInfoDao {
+public class BaseInfoDao implements DaoInterface{
 	
 	private ConnXupt baseInfoCon;
 
@@ -27,7 +28,7 @@ public class BaseInfoDao {
 			base.setNativePlace(rs.getString("native_place"));
 			base.setIdCardType(rs.getString("IDCARD_type"));
 			base.setIdCardNum(rs.getString("IDCARD_NUM"));
-			base.setUserType(rs.getString("type"));
+			base.setUserType(rs.getString("user_type"));
 			base.setTel(rs.getString("tel"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -37,7 +38,7 @@ public class BaseInfoDao {
 	}
 	public BaseInfo getBaseInfo(String id) {
 		BaseInfo baseInfo = null;
-		String sql="SELECT * FROM base_info where id='"+id+"'";
+		String sql="SELECT * FROM base_info where user_id='"+id+"'";
 		try {
 			ResultSet rs = baseInfoCon.excuteQuery(sql);
 			if(rs.next()) {
@@ -46,10 +47,53 @@ public class BaseInfoDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			baseInfo=null;
+			System.out.println(sql);
 		}finally {
 			baseInfoCon.close();
 		}
 		return baseInfo;
+	}
+
+	@Override
+	public List getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getColumnName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getIdNameList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List getComment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTableComment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteData(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setValue() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
