@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
 import com.dao.LoginDao;
 import com.util.Secret;
 
@@ -44,7 +43,7 @@ public class ChangePass extends JDialog implements Comment {
 		this.setTitle("修改密码");
 		this.setLocation(0, 0);
 		this.setIconImage(LoginView.getImages().getSchoolLogo());
-		this.setSize(400,220);
+		this.setSize(350,220);
 		
 		contentPane = new JPanel();
 		FlowLayout flow = new FlowLayout(5);
@@ -71,9 +70,7 @@ public class ChangePass extends JDialog implements Comment {
 		contentPane.add(newPassLab[1]);
 		contentPane.add(newPassText[1]);
 		sublimBtn = new JButton("修改");
-		exitBtn = new JButton("退出");
 		contentPane.add(sublimBtn);
-		contentPane.add(exitBtn);
 		this.setContentPane(contentPane);
 	}
 	
@@ -95,25 +92,13 @@ public class ChangePass extends JDialog implements Comment {
 				}
 				LoginDao loginDao = new LoginDao();
 				if(loginDao.changePass(LoginView.getUser().getId(), oldPass, newPass)) {
-					JOptionPane.showMessageDialog(null, "密码修改成功，请重新登陆", "提示消息",JOptionPane.INFORMATION_MESSAGE , new ImageIcon(LoginView.getImages().getYes2()));
+					JOptionPane.showMessageDialog(null, "密码修改成功，请重新登陆！", "提示消息",JOptionPane.INFORMATION_MESSAGE , new ImageIcon(LoginView.getImages().getYes2()));
 					dispose();
 					LoginView.reLogin();
 				}else {
-					JOptionPane.showMessageDialog(null, "密码修改失败成功", "提示消息",JOptionPane.ERROR_MESSAGE , new ImageIcon(LoginView.getImages().getError2()));
+					JOptionPane.showMessageDialog(null, "密码修改失败！", "提示消息",JOptionPane.ERROR_MESSAGE , new ImageIcon(LoginView.getImages().getError2()));
 				}
 			}
 		});
 	}
-	
-	private void exitAction() {
-		exitBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				dispose();
-			}
-		});
-	}
-
 }

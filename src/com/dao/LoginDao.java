@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import com.mode.UserMode;
 import com.util.ConnXupt;
@@ -18,12 +19,7 @@ public class LoginDao implements DaoInterface{
 		String sql="SELECT id,login.`name`,login.`limit` FROM login where (id='"+idOrName+"' OR name='"+idOrName+"') AND pass='"+pass+"'";
 		try {
 			ResultSet rs = loginCon.excuteQuery(sql);
-			if(rs.next()) {
-				user = new UserMode();
-				user.setId(rs.getString("id"));
-				user.setName(rs.getString("name"));
-				user.setLimit(rs.getInt("limit"));
-			}
+			user = (UserMode)setValue(rs);
 		} catch (Exception e) {
 			// TODO: handle exception
 			return null;
@@ -94,8 +90,32 @@ public class LoginDao implements DaoInterface{
 	}
 
 	@Override
-	public void setValue() {
+	public boolean addData(Object data) {
 		// TODO Auto-generated method stub
-		
+		return false;
+	}
+
+	@Override
+	public boolean updateData(Object data, String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object setValue(ResultSet rs) {
+		// TODO Auto-generated method stub
+		UserMode user = null;
+		try {
+			if(rs.next()) {
+				user = new UserMode();
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setLimit(rs.getInt("limit"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 }

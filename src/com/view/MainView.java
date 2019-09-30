@@ -15,6 +15,7 @@ public class MainView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	protected PersonalInfo personalJDialog;
 	protected ChangePass changePass;
+	private JMenuItem exitItem;
 	
 	public MainView() {
 		super();
@@ -27,7 +28,8 @@ public class MainView extends JFrame {
 		this.setSize(700, 500);
 		this.setResizable(true);
 		this.setJMenuBar(createJMenuBar());
-		createJMenu();
+		createPersonalJMenu();
+		createBackJMenu();
 		this.setVisible(true);
 	}
 	
@@ -36,7 +38,7 @@ public class MainView extends JFrame {
 		return menuBar;
 	}
 	
-	private void createJMenu() {
+	private void createPersonalJMenu() {
 		JMenu personalCenterMenu = new JMenu("个人中心");
 		JMenuItem personalInfoItem = new JMenuItem("个人信息");
 		personalInfoItem.addActionListener(new ActionListener() {
@@ -61,6 +63,33 @@ public class MainView extends JFrame {
 			}
 		});
 		personalCenterMenu.add(changePassItem);
+		personalCenterMenu.addSeparator();
+		exitItem = new JMenuItem("退出");
+		exitItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+		personalCenterMenu.add(exitItem);
 		this.getJMenuBar().add(personalCenterMenu);
+	}
+	
+	private void createBackJMenu() {
+		JMenu backJMenu = new JMenu("后台管理");
+		JMenuItem stuItem = new JMenuItem("学生信息管理");
+		stuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				StudentInfo studentInfo = new StudentInfo();
+				studentInfo.setVisible(true);
+			}
+		});
+		backJMenu.add(stuItem);
+		this.getJMenuBar().add(backJMenu);
 	}
 }

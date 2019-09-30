@@ -34,12 +34,14 @@ public class LoginView extends JDialog {
 	private JPanel cententPane;
 	private LoginDao loginDao;
 	private static LoginView loginView;
+	private static Dimension screenSize;
 
 	public LoginView() {
 		// TODO Auto-generated constructor stub
 		super();
 		loginDao = new LoginDao();
 		LoginView.images = new Images();
+		LoginView.screenSize = new Dimension();
 		InitView();
 	}
 	
@@ -102,6 +104,14 @@ public class LoginView extends JDialog {
 		
 		signInActionListener signIn = new signInActionListener();
 		loginBtn.addActionListener(signIn);
+		exitBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
 		
 	}
 
@@ -140,6 +150,7 @@ public class LoginView extends JDialog {
 			LoginView.user=loginDao.login(idOrName, pass);
 			if(LoginView.user == null) {
 				JOptionPane.showMessageDialog(null, "登陆失败，用户名或密码错误，请重新输入", "警告", JOptionPane.WARNING_MESSAGE, new ImageIcon(LoginView.getImages().getWarring2()));
+				return ;
 			}else {
 				BaseInfoDao baseDao = new BaseInfoDao();
 				LoginView.base=baseDao.getBaseInfo(LoginView.user.getId());
@@ -151,14 +162,14 @@ public class LoginView extends JDialog {
 		
 	}
 
-	public static MainView getMainView() {
-		return mainView;
-	}
-
 	public static void reLogin() {
 		LoginView.mainView.dispose();
 		LoginView.loginView = new LoginView();
 		LoginView.loginView.setVisible(true);
+	}
+
+	public static Dimension getScreenSize() {
+		return screenSize;
 	}
 }
 

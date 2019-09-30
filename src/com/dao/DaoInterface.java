@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public interface DaoInterface {
@@ -9,7 +10,9 @@ public interface DaoInterface {
 	List getComment();
 	String getTableComment();
 	boolean deleteData(String id);
-	void setValue();
+	boolean addData(Object data);
+	boolean updateData(Object data,String id);
+	Object setValue(ResultSet rs);
 }
 
 
